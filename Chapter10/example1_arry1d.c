@@ -1,6 +1,6 @@
 /*Arry show and multiply*/
 #include <stdio.h>
-#define SIZE 10
+#define SIZE 5
 void show(int *pt, int n);
 void multiply(int *pr, int m, double num);
 int main(void)

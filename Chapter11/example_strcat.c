@@ -6,6 +6,7 @@ char * s_gets(char *str, int n);
 int main(void)
 {
     char flowers[SIZE];
+    char bugs[SIZE];
     char add[]= " smells wonderful!";
     puts("Enter your flower\'s name:");
     if (s_gets(flowers, SIZE))
@@ -14,11 +15,13 @@ int main(void)
         strcat(flowers, add);
         puts(flowers);
     }
-    else
+    puts("Enter your favourite bug:");
+    if (s_gets(bugs, SIZE))
     {
-        puts("Happy!");
+        puts(bugs);
+        strncat(bugs, add, SIZE-strlen(bugs));
+        puts(bugs);
     }
-    
     return 0;
 }
 char * s_gets(char *str, int n)

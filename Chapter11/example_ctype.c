@@ -16,6 +16,7 @@ int main(void)
         puts(input);
         to_upper(input);
         puts("The words after calling toUpper:");
+        puts(input);
         printf("The letter with %2d punctions \n", count_puct(input));
         puts("Enter the next letter:");
     }
@@ -43,7 +44,7 @@ char *s_gets(char *str, int num)
 }
 void to_upper(char *str)
 {
-    while (str)
+    while (*str)
     {
         *str = toupper(*str);
         str++;
@@ -52,7 +53,7 @@ void to_upper(char *str)
 int count_puct(const char *str)
 {
     int count = 0;
-    while (str)
+    while (*str)
     {
         if (ispunct(*str))
             count++;

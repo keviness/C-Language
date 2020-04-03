@@ -2,7 +2,7 @@
 some C exercise code during learn C
 ## 目录
 | 章节 |  描述  |  代码  |
-|------|:-------:|:----------:|
+|:------:|:-------:|:----------:|
 | chapter2 | C语言概述  | [Chapter2](Chapter2) |
 | chapter3 | C数据类型  |  [Chapter3](Chapter3) |
 | chapter4 | 输入输出   |  [Chapter4](Chapter4) |

@@ -14,3 +14,4 @@ some C exercise code during learn C
 | chapter10|  数组和指针|  [Chapter10](Chapter10) |
 | chapter11| 字符函数   |  [Chapter11](Chapter11) |
 | chapter12| 存储和链接 |  [Chapter12](Chapter12) |
+| chapter14| 结构和其他数据形式| [Chapter14](Chapter14)|

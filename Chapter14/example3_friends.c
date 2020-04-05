@@ -47,6 +47,5 @@ int main(void)
     printf("The him->job:%s   The guys[1].job:%s \n", him->job, (*him).job);
     printf("The him->favorite book:%s   The guys[1].job:%s \n", him->favorite_book, guys[1].favorite_book);
     return 0;
-
 }
 

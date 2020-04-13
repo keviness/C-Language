@@ -54,7 +54,7 @@ char show_menu(void)
     puts("Enter your choice:");
     puts("u.ToUpper         l.ToLower");
     puts("t.Transform       o.Dump");
-    puts("n.quit");
+    puts("n.Next string");
     choice = getchar();
     choice = tolower(choice);
     line_handle();

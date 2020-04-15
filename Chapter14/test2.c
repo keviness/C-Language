@@ -15,7 +15,7 @@ struct month
     int days;
     int year;
 };
-int get_info(struct month *pst);
+void get_info(struct month *pst);
 void show_info(const struct month *pst);
 
 int main(void)
@@ -26,37 +26,26 @@ int main(void)
     pst = &mon_info;
     pst_cst = &mon_info;
     puts("Enter your infomation:");
-    while (get_info(pst) != 0)
-    {
-        puts("The informations you need:");
-        show_info(pst_cst);
-        puts("Enter the next infomation:");
-    }
+    get_info(pst);
+   
+    puts("The informations you need:");
+    show_info(pst_cst);
     puts("The done~");
-
     return 0;
 }
 
-int get_info(struct month *pst)
+void get_info(struct month *pst)
 {
-    int info;
     puts("Enter the years:");
-    if (scanf("%d", &pst->year) == 1)
-    {
-        puts("Enter the month:");
-        if (scanf("%s", pst->month_abbrev)==1 \
-        && scanf("%s",pst->month_full) && scanf("%d", &pst->month_code))
-        {
-            puts("Enter the day:");
-            scanf ("%d", &pst->days);
-            info = 1;
-        }
-    }
-    else
-    {
-        info = 0;
-    }
-    return info;
+    scanf("%d", &pst->year);
+    puts("Enter the month abbrev:");
+    scanf("%s", pst->month_abbrev);
+    puts("Enter the month full name:");
+    scanf("%s",pst->month_full);
+    puts("Enter the month code:");
+    scanf("%d", &pst->month_code);
+    puts("Enter the day:");
+    scanf ("%d", &pst->days);
 }
 
 void show_info(const struct month *pst)
@@ -88,9 +77,9 @@ void show_info(const struct month *pst)
     else
     {
         total = 0;
-        for (int i=0; i<(pst->month_code); i++)
+        for (int i=1; i<(pst->month_code); i++)
         {
-            total += days_list[i];
+            total += days_list[i-1];
         }
         days_sum = total + (pst->days);
     }

@@ -20,6 +20,7 @@ void handle_line(void);
 void get_info(struct student *pst[], int n);
 void show_info(struct student *pst[], int n);
 float cal_average(struct student *pst[], int n);
+void show_avg(struct student *pst[], int n);
 int main(void)
 {
     struct student *pst[MAXSIZE];
@@ -47,7 +48,8 @@ int main(void)
     }
     puts("The informations:");
     show_info(pst, count);
-    printf("The average is:%f \n", cal_average(pst, count));
+    show_avg(pst, count);
+    puts("The done~");
 
     return 0;
 }
@@ -74,10 +76,20 @@ float cal_average(struct student *pst[], int num)
     float total, average;
     for (int i=0; i<num; i++)
     {
-        total += (pst[i]->grade[i]);
+        for (int j=0; j<GRADE; j++)
+            total += (pst[i]->grade[j]);
     }
     average = total/num;
     return average;
+}
+
+void show_avg(struct student *pst[], int num)
+{
+    for (int i=0; i<num; i++)
+    {
+        printf("The student: %s, the average:%f \n", pst[i]->info.first_name,\
+        pst[i]->average);
+    }
 }
 
 char *s_gets(char *str, int num)

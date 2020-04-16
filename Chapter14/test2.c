@@ -83,7 +83,7 @@ void show_info(const struct month *pst)
         }
         days_sum = total + (pst->days);
     }
-    printf("There are %d days thougth %d months in %d \n", days_sum, pst->month_code, pst->year);
+    printf("There are %d days thought %d months in %d \n", days_sum, pst->month_code, pst->year);
 }
 
 char *s_gets(char *str, int num)

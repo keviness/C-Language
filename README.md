@@ -10,9 +10,9 @@ some C exercise code during learn C
 | chapter6 | while循环  |  [Chapter6](Chapter6) |
 | chapter7 | C控制语句  |  [Chapter7](Chapter7) |
 | chapter8 | 字符串验证 |  [Chapter8](Chapter8) |
-| chapter9 |  函数      |  [Chapter9](Chapter9) |
+| chapter9 |  C函数     |  [Chapter9](Chapter9) |
 | chapter10|  数组和指针|  [Chapter10](Chapter10) |
 | chapter11| 字符函数   |  [Chapter11](Chapter11) |
 | chapter12| 存储和链接 |  [Chapter12](Chapter12) |
 | chapter13|  文件I/O   |  [Chapter13](Chapter13) |
-| chapter14| 结构和其他数据形式| [Chapter14](Chapter14)|
+| chapter14| 结构体和其他数据形式| [Chapter14](Chapter14)|

@@ -18,6 +18,7 @@ typedef struct seat_info
 }SEATINFO;
 
 SEATINFO seats[MAXSIZE];
+int size = sizeof(SEATINFO);
 
 int get_choice(void);
 void show_emptycode(void);
@@ -25,6 +26,8 @@ void show_emptylist(void);
 void show_alphalist(void);
 void assign_seat(void);
 void delete_seat(void);
+int get_file_status(FILE *pf);
+void add_seat(FILE *pf);
 char *get_str(char *str, int num);
 
 int main(int argc, char *argv[])
@@ -32,8 +35,7 @@ int main(int argc, char *argv[])
     FILE *pf;
     int count = 0;
     int choice;
-    int size = sizeof(SEATINFO);
-
+    
     if (argc < 2)
     {
         printf("Usage: The %s program must given two arguments, only %d given. \n", argv[0], argc-1);
@@ -45,17 +47,18 @@ int main(int argc, char *argv[])
         seats[i].selected = false;
     }
 
-    if ((pf = fopen("seat.txt", "a+")) == NULL)
+    if ((pf = fopen(argv[1], "a+")) == NULL)
     {
         printf("Usage: The file %s can\'t be opend.\n", argv[1]);
         exit(EXIT_FAILURE);
     }
-    while (fread(&seats[count], size, 1, pf) == 1)
+    rewind(pf);
+    if (count = fread(seats, size, MAXSIZE, pf))
     {
-        count++;
+        printf("The file read %d items successfully! \n", count);
     }
-
-    while ((choice=get_choice()) != 'f')
+    
+    while ((choice=get_choice()) != 'h')
     {
         switch (choice)
         {
@@ -74,14 +77,41 @@ int main(int argc, char *argv[])
         case 'e':
         case 'E': delete_seat();
             break;
-        case 'F':
-        case 'f': 
+        case 'F': 
+        case 'f': get_file_status(pf);
             break;
+        case 'g':
+        case 'G': add_seat(pf);
+            break;
+        case 'h':
+        case 'H': break;
         default:
+            printf("The error choice you input \n");
             break;
         }
     }
 
+    if (fclose(pf) != 0);
+    {
+        printf("Usage: The file %s can\'t be closed! \n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+
+    if ((pf = fopen(argv[1], "a+")) == NULL)
+    {
+        printf("Usage: The file %s can\'t be opend! \n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    if (fwrite(seats, size, MAXSIZE, pf) != MAXSIZE)
+    {
+        printf("Usage: Error writing to %s file! \n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
+    if (fclose(pf) != 0)
+    {
+        printf("Usage: Error in closing the %s file! \n", argv[1]);
+        exit(EXIT_FAILURE);
+    }
     return 0;
 }
 
@@ -94,11 +124,15 @@ int get_choice(void)
     puts("c) Show alphabetical list of seats");
     puts("d) Assign a customer to a seat");
     puts("e) Delete a seat assignment");
-    puts("f) quit");
+    puts("f) file status");
+    puts("g) add new items");
+    puts("h) quit");
 
-    choice = getchar();
-    EATLINE;
-
+    if ((choice = getchar()) != '\n')
+    {
+        EATLINE;
+    }
+   
     return choice;
 }
 
@@ -127,7 +161,7 @@ void show_emptylist(void)
     }
 }
 
-void show_alphlist(void)
+void show_alphalist(void)
 {
     printf("%-*s %-*s %-*s \n", NAMESIZE, "first name", NAMESIZE, "last name", NAMESIZE, "seat number");
 
@@ -145,7 +179,7 @@ void assign_seat(void)
 {
     SEATINFO new;
     int choice, code, ch;
-
+    puts("Enter the seat code you want to assign:");
     while (scanf("%d", &code) != 1)
     {
         while ((ch = getchar()) != '\n')
@@ -189,6 +223,7 @@ void assign_seat(void)
 void delete_seat(void)
 {
     int code, choice, ch;
+    puts("Enter the seat code you want to delete:");
     while ((code = scanf("%d", &code)) != 1)
     {
         while ((ch = getchar()) != '\n')
@@ -223,5 +258,85 @@ void delete_seat(void)
     seats[code].custom_first[0] = '\0';
     seats[code].custom_last[0] = '\0';
     seats[code].selected = false;
-    
+}
+
+char *get_str(char *str, int num)
+{
+    char *ptr;
+    ptr = fgets(str, num, stdin);
+    if (ptr)
+    {
+        while (*str!='\n' && *str!='\0')
+        {
+            str++;
+        }
+        if (*str == '\n')
+            *str = '\0';
+        else 
+        {
+            EATLINE;
+        }
+    }
+    return ptr;
+}
+
+int get_file_status(FILE *pf)
+{
+    int count = 0;
+ 
+    puts("The information of the seats file:");
+    while (count<MAXSIZE && fread(&seats[count], size, 1, pf))
+    {
+        
+        printf("seat code: %d \n", seats[count].seat_code);
+        printf("seat customer first name: %s \n", seats[count].custom_first);
+        printf("seat customer last name: %s \n", seats[count].custom_last);
+        printf("seat selected status: %d \n", seats[count].selected);
+        count++;
+    }
+    puts("that is all.");
+
+    return count;
+}
+
+void add_seat(FILE *pf)
+{
+    SEATINFO new;
+    int count, ch;
+    count = get_file_status(pf);
+    if (count == MAXSIZE)
+    {
+        printf("The file is full!");
+        exit(EXIT_SUCCESS);
+    }
+    puts("Enter the new seats information:");
+    puts("Enter the customer first name:");
+    while (count<MAXSIZE && get_str(new.custom_first, NAMESIZE) && new.custom_first[0]!='\0')
+    {
+        puts("Enter the customer last name:");
+        get_str(new.custom_last, NAMESIZE);
+        new.selected = true;
+
+        puts("Are sure to add this item?(y/n)");
+        if ((ch = getchar()) != '\n')
+            EATLINE;
+        if (ch=='n' || ch=='N')
+        {
+            printf("Aborting to add this item.");
+            continue;
+        }
+        seats[count+1] = new;
+
+        count++;
+        if (count < MAXSIZE)
+        {
+            puts("Enter the next items");
+            puts("Enter the customer first name:");
+        }
+    }
+    if (fwrite(seats, size, count, pf) != count)
+    {
+        printf("Error in writing in the file \n");
+        return;
+    }
 }

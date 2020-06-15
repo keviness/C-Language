@@ -52,12 +52,12 @@ int main(int argc, char *argv[])
         printf("Usage: The file %s can\'t be opend.\n", argv[1]);
         exit(EXIT_FAILURE);
     }
-    rewind(pf);
+   
     if (count = fread(seats, size, MAXSIZE, pf))
     {
         printf("The file read %d items successfully! \n", count);
     }
-    
+    rewind(pf);
     while ((choice=get_choice()) != 'h')
     {
         switch (choice)
@@ -118,6 +118,7 @@ int main(int argc, char *argv[])
 int get_choice(void)
 {
     int choice;
+    puts("********************************************");
     puts("To choose a function, enter its letter label:");
     puts("a) Show number of empty seats");
     puts("b) Show list of empty seats");
@@ -127,7 +128,7 @@ int get_choice(void)
     puts("f) file status");
     puts("g) add new items");
     puts("h) quit");
-
+    puts("********************************************");
     if ((choice = getchar()) != '\n')
     {
         EATLINE;
@@ -285,7 +286,7 @@ int get_file_status(FILE *pf)
     int count = 0;
  
     puts("The information of the seats file:");
-    while (count<MAXSIZE && fread(&seats[count], size, 1, pf))
+    while (count<MAXSIZE && fread(&seats[count], size, 1, pf)==1)
     {
         
         printf("seat code: %d \n", seats[count].seat_code);
@@ -302,8 +303,9 @@ int get_file_status(FILE *pf)
 void add_seat(FILE *pf)
 {
     SEATINFO new;
-    int count, ch;
+    int filecount, ch, count;
     count = get_file_status(pf);
+    filecount = count;
     if (count == MAXSIZE)
     {
         printf("The file is full!");
@@ -319,7 +321,9 @@ void add_seat(FILE *pf)
 
         puts("Are sure to add this item?(y/n)");
         if ((ch = getchar()) != '\n')
+        {
             EATLINE;
+        }
         if (ch=='n' || ch=='N')
         {
             printf("Aborting to add this item.");
@@ -334,9 +338,8 @@ void add_seat(FILE *pf)
             puts("Enter the customer first name:");
         }
     }
-    if (fwrite(seats, size, count, pf) != count)
+    if (fwrite(seats, size, count-filecount, pf) != (count-filecount))
     {
         printf("Error in writing in the file \n");
-        return;
     }
 }

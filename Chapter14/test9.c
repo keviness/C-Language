@@ -17,15 +17,24 @@ typedef struct seat
     bool isassigned;
 }SEAT;
 
-int size = sizeof(SEAT);
+
+typedef struct flight
+{
+    char flight_number[FLIGHTNUM];
+    SEAT seats[MAXSIZE];
+}FLIGHT;
+
+FLIGHT flights[FLIGHTNUM];
+
+int size = sizeof(FLIGHT);
 bool iscomfirm = false;
-char flight_number[FLIGHTNUM];
+FLIGHT *pflight;
 
 char get_flight(void);
 char get_choice(void);
-void initialize(SEAT *pst);
-FILE * readfile(SEAT *pst, int argc ,char *argv[]);
-void writefile(FILE *pf, SEAT *pst);
+void initialize(FLIGHT *pst);
+FILE * readfile(FLIGHT *pst, int argc ,char *argv[]);
+void writefile(FILE *pf, FLIGHT *pst);
 void show_empty_number(SEAT *pst);
 void show_empty_list(SEAT *pst);
 void show_alpha_list(SEAT *pst);
@@ -36,11 +45,12 @@ char *s_gets(char *str, int num);
 
 int main(int argc, char *argv[])
 {
-    SEAT seats[MAXSIZE];
+    
     char flight_choice, seat_choice;
     FILE * pf;
-    initialize(seats);
-    pf = readfile(seats, argc, argv);
+    
+    initialize(flights);
+    pf = readfile(flights, argc, argv);
     while ((flight_choice = get_flight()) != 'q')
     {
         iscomfirm = false;
@@ -49,19 +59,19 @@ int main(int argc, char *argv[])
             switch (seat_choice)
             {
                 case 'a':
-                case 'A':show_empty_number(seats);
+                case 'A':show_empty_number(pflight->seats);
                     break;
                 case 'b':
-                case 'B':show_empty_list(seats);
+                case 'B':show_empty_list(pflight->seats);
                     break;
                 case 'c':
-                case 'C':show_alpha_list(seats);
+                case 'C':show_alpha_list(pflight->seats);
                     break;
                 case 'd':
-                case 'D':assign_seat(seats);
+                case 'D':assign_seat(pflight->seats);
                     break;
                 case 'e':
-                case 'E':delete_seat(seats);
+                case 'E':delete_seat(pflight->seats);
                     break;
                 case 'f':
                 case 'F':confirm_select();
@@ -72,25 +82,30 @@ int main(int argc, char *argv[])
         }
         if (iscomfirm)
         {
-            writefile(pf, seats);
+            writefile(pf, flights);
         }
     }
-
+    puts("The Done~");
     return 0;
 }
 
-void initialize(SEAT *pst)
+void initialize(FLIGHT *pst)
 {
-    for (int i=0; i<MAXSIZE; i++)
+    int i, j;
+
+    for (i=0; i<FLIGHTNUM; i++)
     {
-        pst[i].seat_code = i+1;
-        strcpy(pst[i].first_name, "");
-        strcpy(pst[i].last_name, "");
-        pst[i].isassigned = false;
+        for (j=0; j<MAXSIZE; j++)
+        {
+            pst[i].seats[j].seat_code = j+1;
+            strcpy(pst[i].seats[j].first_name, "");
+            strcpy(pst[i].seats[j].last_name, "");
+            pst[i].seats[j].isassigned = false;
+        }
     }
 }
 
-FILE * readfile(SEAT *pst, int argc, char *argv[])
+FILE * readfile(FLIGHT *pst, int argc, char *argv[])
 {
     FILE *pf;
     int count;
@@ -104,7 +119,7 @@ FILE * readfile(SEAT *pst, int argc, char *argv[])
         printf("Usage: The %s file can\'t be opened! \n");
         exit(EXIT_FAILURE);
     }
-    if (count = fread(pst, size, MAXSIZE, pf))
+    if (count = fread(pst, size, FLIGHTNUM, pf))
     {
         printf("From the file has read %d items. \n", count);
     }
@@ -127,17 +142,24 @@ char get_flight(void)
     switch (choice)
     {
         case 'a': 
-        case 'A': strcpy(flight_number, "102");
+        case 'A':pflight = &flights[0];
+                strcpy(pflight->flight_number, "102");
             break;
         case 'b':
-        case 'B': strcpy(flight_number, "311");
+        case 'B': pflight = &flights[1];
+                  strcpy(pflight->flight_number, "311");
             break;
         case 'c':
-        case 'C': strcpy(flight_number, "444");
+        case 'C': 
+                  pflight = &flights[2];
+                  strcpy(pflight->flight_number, "444");
             break;
         case 'd':
-        case 'D': strcpy(flight_number, "519");
+        case 'D': pflight = &flights[3];
+                  strcpy(pflight->flight_number, "519");
             break;
+        case 'q':
+        case 'Q':break;
         default: printf("The flight choice is error! \n");
             break;
     }
@@ -169,10 +191,10 @@ char get_choice(void)
     return choice;
 }
 
-void writefile(FILE *pf, SEAT *pst)
+void writefile(FILE *pf, FLIGHT *pst)
 {
     int count;
-    if (count = fwrite(pst, size, MAXSIZE, pf))
+    if (count = fwrite(pst, size, FLIGHTNUM, pf))
     {
         printf("There are %d items has been write in file.\n", count);
     }
@@ -206,7 +228,7 @@ char *s_gets(char *str, int num)
 void show_empty_number(SEAT *pst)
 {
     int count = 0;
-    printf("In %s flight: \n", flight_number);
+    printf("In %s flight: \n", pflight->flight_number);
     for (int i=0; i<MAXSIZE; i++)
     {
         if (!pst[i].isassigned)
@@ -225,7 +247,7 @@ void confirm_select(void)
 
 void show_empty_list(SEAT *pst)
 {
-    printf("In %s flight: \n", flight_number);
+    printf("In %s flight: \n", pflight->flight_number);
     for (int i=0; i<MAXSIZE; i++)
     {
         if (!pst[i].isassigned)
@@ -237,7 +259,7 @@ void show_empty_list(SEAT *pst)
 
 void show_alpha_list(SEAT *pst)
 {
-    printf("In %s flight: \n", flight_number);
+    printf("In %s flight: \n", pflight->flight_number);
     for (int i=0; i<MAXSIZE; i++)
     {
         if (pst[i].isassigned)
@@ -250,14 +272,14 @@ void show_alpha_list(SEAT *pst)
 
 void assign_seat(SEAT *pst)
 {
-    int number, ch;
+    int number, ch, rest;
     SEAT temp;
-    printf("In %s flight: \n", flight_number);
+    printf("In %s flight: \n", pflight->flight_number);
     puts("Enter the seat number you want to assign:");
 
-    while ((scanf("%d", &number)!=1) || number<1 || number>12 || pst[number-1].isassigned)
+    while ((rest = scanf("%d", &number)!=1) || number<1 || number>12 || pst[number-1].isassigned)
     {
-        if (number<1 || number>12 || scanf("%d", &number)!=1)
+        if (number<1 || number>12 || rest!=1)
         {
             printf("The number is out of range. try again: \n");
             continue;
@@ -291,12 +313,12 @@ void assign_seat(SEAT *pst)
 
 void delete_seat(SEAT *pst)
 {
-    int number, ch;
-    printf("In %s flight: \n", flight_number);
+    int number, ch, rest;
+    printf("In %s flight: \n", pflight->flight_number);
     puts("Enter the number you want to delete:");
-    while ((scanf("%d", &number))!=1 || number<1 || number>12 || !pst[number-1].isassigned)
+    while ((rest = scanf("%d", &number))!=1 || number<1 || number>12 || !pst[number-1].isassigned)
     {
-        if (scanf("%d", &number)!=1 || number<1 || number>12)
+        if (rest!=1 || number<1 || number>12)
         {
             printf("The number seat you input out of range. try again:\n");
             continue;

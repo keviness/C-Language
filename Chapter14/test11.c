@@ -18,7 +18,7 @@ int main(void)
     puts("Generate the list:");
     for (int i=0; i<SIZE; i++)
     {
-        array1[i] = i/10;
+        array1[i] = i;
     }
     puts("The initial array:");
     print_array(array1);

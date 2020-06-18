@@ -29,10 +29,10 @@ int main(void)
     puts("The information of this file:");
     while ((ch = getc(pf)) != EOF)
     {
-        putc(ch,stdout);
+        putc(ch, stdout);
         count++;
     }
-    printf("There are %d characters in this file. \n", count);
+    printf("\nThere are %d characters in this file. \n", count);
     if (fclose(pf) != 0)
     {
         printf("Error in closing the %s file. \n", file_name);

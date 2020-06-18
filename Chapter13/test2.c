@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     FILE *pf_target;
     FILE *pf_source;
-    //char ch;
+    char ch;
     char target;
     int count;
     char temp[SIZE];
@@ -29,32 +29,19 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    while ((count = fread(temp, sizeof(char), SIZE, pf_source)) > 0)
-    {
-        fwrite(temp, sizeof(char), count, pf_target);
-    }
-    printf("There are %d charactes from %s file write in %s file. \n", count, argv[1], argv[2]);
-    /*
     while ((ch = getc(pf_source)) != EOF)
     {
         putc(ch, pf_target);
         count++;
     }
     printf("There are %d characters from %s file had been write in the %s file \n", count, argv[1], argv[2]);
-    rewind(pf_target);
+   
     puts("The file content:");
     while ((target = getc(pf_target)) != EOF)
     {
         putchar(target);
     }
     puts("\nThat is all");
-    */
-   rewind(pf_target);
-    puts("The file content:");
-    while (fread(read, sizeof(char), SIZE, pf_target))
-    {
-        printf("%s", read);;
-    }
     
     if ((fclose(pf_source))!=0 || fclose(pf_target)!=0)
     {

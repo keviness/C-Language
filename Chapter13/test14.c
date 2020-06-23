@@ -1,4 +1,4 @@
-/*** Chapter13: test12 ***/
+/*** Chapter13: test14 ***/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

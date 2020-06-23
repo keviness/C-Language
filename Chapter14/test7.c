@@ -83,8 +83,6 @@ int main(int argc, char *argv[])
             printContent(&library[i]);
         }
     }
-    
-    
 
     if (count == MAXSIZE) 
     {

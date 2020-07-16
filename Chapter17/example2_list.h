@@ -2,6 +2,8 @@
 #ifndef EXAMPLE2_LIST_H_
 #define EXAMPLE2_LIST_H_
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
 #define TITLE 30
 
 typedef struct  film
@@ -24,7 +26,7 @@ bool ListIsEmpty(const List *plist);
 
 bool ListIsFull(const List *plist);
 
-int ListItemCount(const List *plist);
+unsigned int ListItemCount(const List *plist);
 
 bool AddItem(Item item, List *plist);
 

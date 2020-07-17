@@ -17,3 +17,4 @@ some C exercise code during learn C
 | chapter13|  文件I/O   |  [Chapter13](Chapter13) |
 | chapter14| 结构体和其他数据形式| [Chapter14](Chapter14)|
 | chapter16| 预处理器和C库| [Chapter16](Chapter16)|
+| chapter17| 高级数据结构 | [Chapter17](Chapter17)|

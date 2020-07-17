@@ -3,7 +3,7 @@
 
 #include "example2_list.h"
 
-static CopyToNode(Item item, Node *pnode);
+static void CopyToNode(Item item, Node *pnode);
 
 void InitializeList(List *plist)
 {
@@ -87,7 +87,7 @@ void EmptyTheList(List *plist)
     }
 }
 
-void CopyToNode(Item item, Node *pnew)
+static void CopyToNode(Item item, Node *pnew)
 {
     pnew->item = item;
 }

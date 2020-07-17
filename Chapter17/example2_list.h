@@ -2,6 +2,7 @@
 #ifndef EXAMPLE2_LIST_H_
 #define EXAMPLE2_LIST_H_
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
 #define TITLE 30

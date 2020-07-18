@@ -1,7 +1,7 @@
 /*** Chapter17: example2 test.c ***/
 #include <stdio.h>
 #include "example2_list.h"
-
+#include <stdlib.h>
 char *s_gets(char *str, int num);
 void show_item(Item item);
 
@@ -13,11 +13,12 @@ int main(void)
     InitializeList(&movie);
     if (ListIsFull(&movie))
     {
-        puts("Can\'t get memory!");
+        puts("The list is full");
         exit(EXIT_SUCCESS);
     }
+
     puts("Enter the book title:");
-    while (s_gets(temp.title, TITLE) && temp.title[0]!='\0')
+    while (s_gets(temp.title, TITLE)!=false && temp.title[0]!='\0')
     {
         puts("Enter the rate:");
         scanf("%d", &temp.rate);
@@ -43,11 +44,10 @@ int main(void)
         puts("The content of the list:");
         Travels(&movie, show_item);
     }
-
     printf("The list item count:\n", ListItemCount(&movie));
-
     EmptyTheList(&movie);
     puts("The Done~");
+
     return 0;
 }
 

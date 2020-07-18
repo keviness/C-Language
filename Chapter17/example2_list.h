@@ -1,23 +1,25 @@
 /*** Chapter17 example2 list.h ***/
-#ifndef EXAMPLE2_LIST_H_
-#define EXAMPLE2_LIST_H_
+#ifndef _EXAMPLE2_LIST_H_
+#define _EXAMPLE2_LIST_H_
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 #include <stdbool.h>
 #define TITLE 30
 
-typedef struct  film
+struct  film
 {
     char title[TITLE];
     int rate;
-}Item;
+};
+typedef struct film Item;
 
-typedef struct node
+struct node
 {
     Item item;
     struct node *next;
-}Node;
+};
+typedef struct node Node;
 
 typedef Node * List;
 

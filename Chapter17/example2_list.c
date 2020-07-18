@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <stdbool.h>
 #include "example2_list.h"
 
 static void CopyToNode(Item item, Node *pnode);
@@ -44,13 +44,16 @@ bool AddItem(Item item, List *plist)
 {
     Node *pnew;
     pnew = (Node *)malloc(sizeof(Node));
+
     if (pnew == NULL)
     {
         printf("Can\'t add item\n");
         return false;
     }
+
     CopyToNode(item, pnew);
     Node *scan = *plist;
+    
     if (scan == NULL)
     {
         (*plist)->item = item;

@@ -31,7 +31,7 @@ bool TreeIsFull(const Tree *ptree);
 
 int TreeNodeCount(const Tree *ptree);
 
-bool InTree(const Item *pitem, const Tree *ptree);
+bool IsInTree(const Item *pitem, const Tree *ptree);
 
 bool AddItem(const Item *pitem, Tree *ptree);
 
@@ -39,6 +39,6 @@ bool DeleteItem(const Item *pitem, Tree *ptree);
 
 void Travers(const Tree *ptree, void (*pfun)(Item item));
 
-void DeleteAll(Tree *ptree);
+void ClearTree(Tree *ptree);
 
 #endif

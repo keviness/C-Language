@@ -146,3 +146,124 @@ static void DeleteAllNodes(Node *proot)
         DeleteAllNodes(pright);
     }
 }
+
+static bool ToLeft(const Item *pitem1, const Item *pitem2)
+{
+    int compare;
+    if ((compare = strcmp(pitem1->petkind, pitem2->petkind)) < 0)
+    {
+        return true;
+    }
+    else if (compare==0 && strcmp(pitem1->petname, pitem2->petname)<0)
+        return true;
+    else
+    {
+        return false;
+    }
+}
+
+static bool ToRight(const Item *pitem1, const Item *pitem2)
+{
+    int compare;
+    if ((compare = strcmp(pitem1->petkind, pitem2->petkind)) > 0)
+        return true;
+    else if (compare==0 && strcmp(pitem1->petname, pitem2->petname)>0)
+        return true;
+    else
+    {
+        return false;
+    }
+}
+
+static void AddNodeInTree(Node *pnewNode, Node *proot)
+{
+    if (ToLeft(&pnewNode->item, &proot->item))
+    {
+        if (proot->left == NULL)
+            proot->left = pnewNode;
+        else
+            AddNodeInTree(pnewNode, proot->left);
+    }
+    else if (ToRight(&pnewNode->item, &proot->item))
+    {
+        if (proot->right == NULL)
+            proot->right = pnewNode;
+        else
+            AddNodeInTree(pnewNode, proot->right);
+    }
+    else
+    {
+        fprintf(stderr, "Location error in AddNodeInTree()\n");
+        exit(EXIT_FAILURE);
+    }
+}
+
+static Node *MakeNode(const Item *pitem)
+{
+    Node *newNode = (Node *)malloc(sizeof(Node));
+    if (newNode != NULL)
+    {
+        newNode->item = *pitem;
+        newNode->left = NULL;
+        newNode->right = NULL;
+    }
+    return newNode;
+}
+
+static Pair SeekItem(const Item *pitem, const Tree *ptree)
+{
+    Pair look;
+    look.parent = NULL;
+    look.child = ptree->root;
+
+    if (look.child == NULL)
+    {
+        fprintf(stderr, "The tree is empty!\n");
+        exit(EXIT_FAILURE);
+    }
+
+    while (look.child != NULL)
+    {
+        if (ToLeft(pitem, &(look.child->item)))
+        {
+            look.parent = look.child;
+            look.child = look.child->left;
+        }
+        else if (ToRight(pitem, &(look.child->item)))
+        {
+            look.parent = look.child;
+            look.child = look.child->right;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return look;
+}
+
+static void DeleteNodeInTree(const Node **pnode)
+{
+    Node *temp;
+    if ((*pnode)->left == NULL)
+    {
+        temp = *pnode;
+        (*pnode) = (*pnode)->right;
+        free(temp);
+    }
+    else if ((*pnode)->right == NULL)
+    {
+        temp = *pnode;
+        (*pnode) = (*pnode)->left;
+        free(temp);
+    }
+    else
+    {
+        for (temp = (*pnode)->left; temp->right!=NULL; temp=temp->right)
+            continue;
+        temp->right = (*pnode)->right;
+        temp = *pnode;
+        *pnode = (*pnode)->left;
+        free(temp);
+    }
+}

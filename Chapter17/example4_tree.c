@@ -16,7 +16,7 @@ static bool ToRight(const Item *item1, const Item *item2);
 static void AddNodeInTree(Node *pNew, Node *proot);
 static void InOrder(const Node *proot, void(*pfun)(Item item));
 static Pair SeekNode(const Item *pitem, const Tree *ptree);
-static void DeleteNodeInTree(Node **proot);
+static void DeleteNodeInTree(const Node **proot);
 static void DeleteAllNodes(Node *proot);
 
 void InitializeTree(Tree *ptree)

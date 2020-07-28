@@ -2,6 +2,7 @@
 #ifndef _EXAMPLE4_TREE_H_
 #define _EXAMPLE4_TREE_H_
 #include <stdio.h>
+#include <stdbool.h>
 #define NAME 20
 #define MAXSIZE 20
 typedef struct  pet

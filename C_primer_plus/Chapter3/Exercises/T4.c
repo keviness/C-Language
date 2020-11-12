@@ -7,5 +7,6 @@ int main(void)
     printf("the fix-point notation is: %f\n");
     printf("the exponetial notation is: %e\n");
     printf("the p notation is: %a");
+    
     return 0;
 }

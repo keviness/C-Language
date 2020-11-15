@@ -30,4 +30,4 @@ Some records during learning C, including exercises and examples in these books:
 ### 目录
 | Chapters | Description  |  Codes  |
 |:--------:|:------------:|:-------:|
-| Chapter1 | 猜数字游戏     | ./明解C语言/Chapter1  |
+| Chapter1 | 猜数字游戏     | [猜数字游戏](./明解C语言/Chapter1)  |

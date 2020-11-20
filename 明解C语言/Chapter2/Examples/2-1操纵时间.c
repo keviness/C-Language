@@ -10,7 +10,7 @@ int main(void)
     long answer;
     double spend_time;
 
-    srand(time);
+    srand(time(NULL));
     a = rand() % 90;
     b = rand() % 101;
     c = rand() % 1000;

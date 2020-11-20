@@ -1,4 +1,4 @@
 *.exe
 *.vscode
 *.txt
-*.DS_Store
+.DS_Store

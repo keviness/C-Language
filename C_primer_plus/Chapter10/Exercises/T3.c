@@ -1,9 +1,11 @@
 #include <stdio.h>
 #define SIZE 5
+
 void copy_arry(double ar[], const double br[], int r);
 void copy_ptr(double *ar, const double *br, int r);
 void copy_ptrs(double *ar, const double *br, double *end);
 void show_arry(const double *ar, int r);
+
 int main(void)
 {
     double source[SIZE] = {1.1, 2.2, 3.3, 4.4, 5.5};
@@ -33,6 +35,7 @@ void show_arry(const double *arry, int r)
         printf("%2g ", *(arry+i));
     putchar('\n');
 }
+
 void copy_arry(double target[], const double source[], int r)
 {
     int i;
@@ -41,12 +44,14 @@ void copy_arry(double target[], const double source[], int r)
         target[i] = source[i];
     }
 }
+
 void copy_ptr(double *target, const double *source, int r)
 {
     int i;
     for (i=0; i<r; i++)
         *(target+i) = *(source+i);
 }
+
 void copy_ptrs(double *target, const double *source, double *end)
 {
     int i;

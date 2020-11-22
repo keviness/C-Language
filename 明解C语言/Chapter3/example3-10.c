@@ -50,13 +50,13 @@ void startgame(void)
     computer = rand() % 3;
     do
     {
-        printf("rock(0),scissor(1),paper(2)...:\n");
+        printf("*************************\n");
         for (i=0; i<3; i++)
         {
             printf("(%d)%s", i, hands[i]);
             printf(":");
-            scanf("%d", &human);
         }
+        scanf("%d", &human);
     }while (human<0 || human>2);
 }
 
@@ -71,7 +71,7 @@ void count_times(int result)
     }
 }
 
-void show_resule(int result)
+void show_result(int result)
 {
     switch (result)
     {

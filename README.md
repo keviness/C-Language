@@ -32,3 +32,4 @@ Some records during learning C, including exercises and examples in these books:
 |:--------:|:------------:|:-------:|
 | Chapter1 | 猜数字游戏     | [猜数字游戏](./明解C语言/Chapter1)  |
 | Chapter2 | 专注于显示     | [concentrate on display](./明解C语言/Chapter2)|
+| Chapter3 | 猜拳游戏       | [Rock&Scissors&paper](./明解C语言/Chapter2)|

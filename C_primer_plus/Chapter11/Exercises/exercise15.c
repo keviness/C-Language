@@ -38,7 +38,6 @@ int my_atoi(char *string)
 		{
 			 sum = 10 * sum + (*string - '0'); // add newest digit in ones place
 		}
-
 		string++;
 	}
 

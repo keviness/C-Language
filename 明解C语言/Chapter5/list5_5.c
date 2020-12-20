@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAXLVEL  10
-#define MINLEVEL  3
+#define MINLEVEL 3
 #define MAXSTAEG 5
 
 int sleep(unsigned long mins);
@@ -61,6 +61,7 @@ int main(void)
 int sleep(unsigned long mins)
 {
     clock_t c1 = clock(), c2;
+
     do
     {
         if ((c2 = clock()) == (clock_t)-1)

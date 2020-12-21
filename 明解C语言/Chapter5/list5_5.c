@@ -43,6 +43,7 @@ int main(void)
         fflush(stdout);
         scanf("%s", guessStr);
 
+        printf("The souce string: %s\n", randomStr);
         if (strcmp(randomStr, guessStr) != 0)
             printf("The error \n");
         else
@@ -52,6 +53,7 @@ int main(void)
         }
     }
     end = clock();
+    
     printf("%d guess success times in %d stages! \n", success, stage);
     printf("spend %4.2f times\n", (double)(end-start)/CLOCKS_PER_SEC);
 

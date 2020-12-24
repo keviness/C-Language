@@ -33,4 +33,5 @@ Some records during learning C, including exercises and examples in these books:
 | Chapter1 | 猜数字游戏    | [猜数字游戏](./明解C语言/Chapter1)  |
 | Chapter2 | 专注于显示    | [concentrate on display](./明解C语言/Chapter2)|
 | Chapter3 | 猜拳游戏      | [Rock&Scissors&paper](./明解C语言/Chapter3)|
+| Chapter4 | 珠玑妙算      | [Master Mind](./明解C语言/Chapter4)|
 | Chapter5 | 单纯记忆训练  | [Memory train](./明解C语言/Chapter5)|

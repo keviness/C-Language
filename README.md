@@ -7,8 +7,8 @@ Some records during learning C, including exercises and examples in these books:
 ## C Primer plus(six edition)
 ### 目录
 | Chapters | Description |  Codes  |
-|:------:|:-------:|:----------:|
-| chapter2 | C语言概述  | [Chapter2](./C_primer_plus/Chapter2) |
+|:--------:|:-----------:|:-------:|
+| chapter2 |  C语言概述  | [Chapter2](./C_primer_plus/Chapter2) |
 | chapter3 | C数据类型  |  [Chapter3](./C_primer_plus/Chapter3) |
 | chapter4 | 输入输出   |  [Chapter4](./C_primer_plus/Chapter4) |
 | chapter5 | 表达式和语句|  [Chapter5](./C_primer_plus/Chapter5) |
@@ -25,7 +25,6 @@ Some records during learning C, including exercises and examples in these books:
 | chapter17| 高级数据结构 | [Chapter17](./C_primer_plus/Chapter17)|
 
 ----
-
 ## 明解C语言：中级篇
 ### 目录
 | Chapters | Description  |  Codes  |
@@ -34,4 +33,5 @@ Some records during learning C, including exercises and examples in these books:
 | Chapter2 | 专注于显示    | [concentrate on display](./明解C语言/Chapter2)|
 | Chapter3 | 猜拳游戏      | [Rock&Scissors&paper](./明解C语言/Chapter3)|
 | Chapter4 | 珠玑妙算      | [Master Mind](./明解C语言/Chapter4)|
-| Chapter5 | 单纯记忆训练  | [Memory train](./明解C语言/Chapter5)|
+| Chapter5 | 单纯记忆训练  | [Memory Train](./明解C语言/Chapter5)|
+| Chapter6 | 今天是几号   |  [Today?](./明解C语言/Chapter6)|

@@ -6,9 +6,14 @@ void ctime_ex(const time_t timer);
 
 int main(void)
 {
+    time_t start, end;
+
+    start = time(NULL);
     time_t current = time(NULL);
     asctime_ex(current);
     ctime_ex(current);
+    end = time(NULL);
+    printf("The time used:%4.2f \n", difftime(end, start));
 
     return 0;
 }

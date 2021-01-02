@@ -25,6 +25,16 @@ int main(void)
 
 int dayofweek(int year, int month, int day)
 {
+    /*Zeller
+    
+    if (month==1 || month==2)
+    {
+        year--;
+        month += 12;
+    }
+    return (year + year/4 - year/100 + year/400 + (13*month+8)/5 +day) % 7;
+    */
+
     struct tm t;
     t.tm_year = year - 1900;
     t.tm_mon = month - 1;

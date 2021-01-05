@@ -35,3 +35,4 @@ Some records during learning C, including exercises and examples in these books:
 | Chapter4 | 珠玑妙算      | [Master Mind](./明解C语言/Chapter4)|
 | Chapter5 | 单纯记忆训练  | [Memory Train](./明解C语言/Chapter5)|
 | Chapter6 |     日历     |  [Calendar](./明解C语言/Chapter6)|
+| Chapter7 |   右脑训练    |  [RightSideHead train](./明解C语言/Chapter7)|

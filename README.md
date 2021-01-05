@@ -34,4 +34,4 @@ Some records during learning C, including exercises and examples in these books:
 | Chapter3 | 猜拳游戏      | [Rock&Scissors&paper](./明解C语言/Chapter3)|
 | Chapter4 | 珠玑妙算      | [Master Mind](./明解C语言/Chapter4)|
 | Chapter5 | 单纯记忆训练  | [Memory Train](./明解C语言/Chapter5)|
-| Chapter6 | 今天是几号   |  [Today?](./明解C语言/Chapter6)|
+| Chapter6 |     日历     |  [Calendar](./明解C语言/Chapter6)|

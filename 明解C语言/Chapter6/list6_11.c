@@ -10,10 +10,11 @@ void put_calendar(int y, int m);
 int main(void)
 {
     int y, m;
+
     printf("The calendar: \n");
     printf("The year:");  scanf("%d", &y);
     printf("The month:"); scanf("%d", &m);
-    putchar("\n");
+    putchar('\n');
 
     put_calendar(y, m);
 
@@ -41,6 +42,7 @@ int monthdays(int year, int month)
     {
         return mday[month];
     }
+
     return mday[month] + is_leap(year);
 }
 

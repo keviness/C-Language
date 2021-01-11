@@ -1,9 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define SIZE 10
 
-int mian(void)
+int main(void)
 {
-    
+   int arr[SIZE] = {12, 21, 1, 2, 4, 5, 6};
+   int choice[SIZE-1] = {0};
+   srand(time(NULL));
+   int x = rand();
+   int i, j;
+   i = j = 0;
+   /*
+   for (i=j=0; i<SIZE-1; i++)
+   {
+       if (i != x)
+       {
+           choice[j++] = arr[i];
+       }
+   }
+   */
+   while (i < SIZE)
+   {
+       if (i != x)
+       {
+           choice[j++] = arr[i];
+       }
+       i++;
+   } 
+
+   return 0;
 }
 

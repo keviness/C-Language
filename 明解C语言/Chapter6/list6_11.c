@@ -51,8 +51,9 @@ void put_calendar(int year, int month)
     int weekday = dayofweek(year, month, 1);
     int days  = monthdays(year, month);
 
+    printf(" SUN MON TUE WED THU FRI SAT  \n");
     printf("%*s", 3*weekday, "");
-    for (int i=0; i<days; i++)
+    for (int i=1; i<=days; i++)
     {
         printf("%3d", i);
         if (++weekday % 7 == 0)

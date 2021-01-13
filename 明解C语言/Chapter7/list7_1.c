@@ -11,6 +11,7 @@ int main(void)
     int x = rand();
     int i, j;
     i = j = 0;
+
     /*
     for (i=j=0; i<SIZE-1; i++)
     {
@@ -20,6 +21,7 @@ int main(void)
         }
     }
     */
+   
     while (i < SIZE)
     {
         if (i != x)

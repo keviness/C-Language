@@ -37,3 +37,5 @@ Some records during learning C, including exercises and examples in these books:
 | Chapter6 |     日历     |  [Calendar](./明解C语言/Chapter6)|
 | Chapter7 |   右脑训练    |  [RightSideHead train](./明解C语言/Chapter7)|
 | Chapter8 |   打字练习   |  [Write Train](./明解C语言/Chapter8)|
+| Chapter9 |   文件处理   |  [File Handle](./明解C语言/Chapter9)|
+| Chapter10 |   英语单词学习软件   |  [English words learning soft](./明解C语言/Chapter10)|

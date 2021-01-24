@@ -48,3 +48,34 @@ int monthdays(int year, int month)
 
     return mday[month] + is_leap(year);
 }
+void make_calendar(int year, int month, char s[7][22])
+{
+    int i, k;
+    int wd = dayofweek(year, month, 1);
+    int mdays = monthdays(year, month);
+    char tmp[4];
+
+    sprintf(s[0], "%10d / %02d     ", year, month);
+    for (k=1; k<7; k++)
+        s[k][0] = '\0';
+
+    k = 1;
+    sprintf(s[k], "%*s", 3*wd, "");
+
+    for (i=1; i<mdays; i++)
+    {
+        sprintf(tmp, "%3d", i);
+        strcat(s[k], tmp);
+        if (++wd % 7 == 0)
+            k++;
+    }
+    if (wd % 7 == 0)
+        k--;
+    else
+    {
+        for (wd %= 7; wd<7; wd++)
+            strcat(s[k], " ");
+    }
+    while (++k < 7)
+        sprintf(s[k], "%21s", "");
+}

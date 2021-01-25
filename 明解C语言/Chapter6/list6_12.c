@@ -48,6 +48,7 @@ int monthdays(int year, int month)
 
     return mday[month] + is_leap(year);
 }
+
 void make_calendar(int year, int month, char s[7][22])
 {
     int i, k;
@@ -78,4 +79,25 @@ void make_calendar(int year, int month, char s[7][22])
     }
     while (++k < 7)
         sprintf(s[k], "%21s", "");
+}
+
+void print(char sbuf[3][7][22], int n)
+{
+    int i, j;
+
+    for (i=0; i<n; i++)
+    {
+        printf("%s  ", sbuf[i][0]);
+    }
+    putchar('\n');
+
+    for (i=0; i<n; i++)
+        printf("----------------   ");
+    putchar('\n');
+
+    for (i=1; i<7; i++)
+        for (j=0; j<n; j++)
+            printf("%s  ", sbuf[j][i]);
+        putchar('\n');
+    putchar('\n');
 }

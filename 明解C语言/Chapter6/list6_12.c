@@ -101,3 +101,8 @@ void print(char sbuf[3][7][22], int n)
         putchar('\n');
     putchar('\n');
 }
+
+void put_calendar(int year, int month)
+{
+    
+}

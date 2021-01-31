@@ -99,6 +99,7 @@ void print(char sbuf[3][7][22], int n)
         for (j=0; j<n; j++)
             printf("%s  ", sbuf[j][i]);
         putchar('\n');
+        
     putchar('\n');
 }
 

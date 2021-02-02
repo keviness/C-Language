@@ -7,19 +7,19 @@ int mday[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 int dayofweek(int year, int month, int day);
 int is_leap(int year);
 int monthdays(int year, int month);
-void put_calendar(int y, int m);
+void put_calendar(int y1, int m1, int y2, int m2);
 void make_calendar(int year, int month, char s[7][22]);
 
 int main(void)
 {
-    int y, m;
+    int y1, y2, m1, m2;
 
     printf("The calendar: \n");
-    printf("The year:");  scanf("%d", &y);
-    printf("The month:"); scanf("%d", &m);
+    printf("The year:");  scanf("%d", &y1);
+    printf("The month:"); scanf("%d", &m1);
     putchar('\n');
 
-    put_calendar(y, m);
+    put_calendar(y1, m1, y2, m2);
 
     return 0;
 }
@@ -103,10 +103,32 @@ void print(char sbuf[3][7][22], int n)
     putchar('\n');
 }
 
-void put_calendar(int year, int month)
+void put_calendar(int y1, int m1, int y2, int m2)
 {
-    
-    
-    
+    int y = y1;
+    int m = m1;
+    int n = 0;
+    char sbuf[3][7][22];
+
+    while (y <= y2)
+    {
+        if (y == y2 && m >m2) break;
+        make_calendar(y, m, sbuf[n++]);
+        if (n == 3)
+        {
+            print(sbuf, n);
+            n = 0;
+        }
+        m++;
+        if (m==13 && y<y2)
+        {
+            y++;
+            m = 1;
+        }
+    }
+    if (n)
+    {
+        print(sbuf, m);
+    }
 }
 

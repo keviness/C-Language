@@ -14,11 +14,13 @@ int main(void)
 {
     int y1, y2, m1, m2;
 
-    printf("The calendar: \n");
+    printf("The start month: \n");
     printf("The year:");  scanf("%d", &y1);
     printf("The month:"); scanf("%d", &m1);
     putchar('\n');
-
+    printf("The end month: \n");
+    printf("The year:");  scanf("%d", &y2);
+    printf("The month:");  scanf("%d", m2);
     put_calendar(y1, m1, y2, m2);
 
     return 0;

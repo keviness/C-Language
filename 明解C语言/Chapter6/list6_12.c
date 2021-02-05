@@ -20,7 +20,7 @@ int main(void)
     putchar('\n');
     printf("The end month: \n");
     printf("The year:");  scanf("%d", &y2);
-    printf("The month:");  scanf("%d", m2);
+    printf("The month:");  scanf("%d", &m2);
     put_calendar(y1, m1, y2, m2);
 
     return 0;

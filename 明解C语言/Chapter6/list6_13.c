@@ -1,4 +1,4 @@
-/*** Chapter6: list6-13~list6-15 ***/
+/*** Chapter6: list6-13~list6-16 ***/
 #include <stdio.h>
 
 //method first

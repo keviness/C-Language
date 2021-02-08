@@ -48,7 +48,8 @@ int main(int argc, char *argv[])
 int get_month(char *s)
 {
     int i, m;
-    char *month[] = {"January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    char *month[] = {"", "January", "February", "March","April", "May", "June", "July", "August", "September", "October", "November", "December"};
+
     m = atoi(s);
     if (m>=1 && m<=12)
         return m;

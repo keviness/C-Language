@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define MAXSTAGE 10
+#define swap(type, x, y) do{type t = x; x=y; y=t;} while (0)
 
 int main(void)
 {
@@ -26,6 +27,14 @@ int main(void)
                 a[j++] = dgt[i];
             }
         }
+
+        for (i=7; i>0; i--)
+        {
+            int j = rand()%(i+1);
+            if (i != j)
+                swap(int, a[i], a[j]);
+        }
+
         for (i=0; i<8; i++)
         {
             printf("%d ", a[i]);
